@@ -1,35 +1,35 @@
 class Drep < Formula
   desc "A local commit gate: runs the linters your repo configures, and sends changed code to an LLM for review"
   homepage "https://github.com/slb350/drep"
-  version "2.0.0"
+  version "2.1.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/slb350/drep/releases/download/v2.0.0/drep-ai-aarch64-apple-darwin.tar.xz"
-      sha256 "1aea09e1bc64e1dfe1bec9913ba90e0786c3b76cbe8835542a41c071d751f6de"
+      url "https://github.com/slb350/drep/releases/download/v2.1.0/drep-ai-aarch64-apple-darwin.tar.xz"
+      sha256 "2fc1fc17f5da2bbef40dce38ac743a5174fd4c1066fa3f6076c44334ba44eac6"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/slb350/drep/releases/download/v2.0.0/drep-ai-x86_64-apple-darwin.tar.xz"
-      sha256 "0a9cf6ee17d92c157aa59da65164e101e4c5ffae711b0556b5dd2ba7ec01d4d7"
+      url "https://github.com/slb350/drep/releases/download/v2.1.0/drep-ai-x86_64-apple-darwin.tar.xz"
+      sha256 "e23bc86cb6b0e25516aca6e8d046ae1f1503f33d288094949bb75c7cd6d22075"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/slb350/drep/releases/download/v2.0.0/drep-ai-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "455791fe8b11865cf16e993587bfc352ecbb4cb5a34d7a80b6b4fd130ac2183b"
+      url "https://github.com/slb350/drep/releases/download/v2.1.0/drep-ai-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "59659c0c9d056022f059accb2595ae85ef5440bb47ebea62c129789ab61426f1"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/slb350/drep/releases/download/v2.0.0/drep-ai-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "809b4a450abc476f0bb8f9068adb33f939c20b1f763ae72ad06ae46b0d2f5e9b"
+      url "https://github.com/slb350/drep/releases/download/v2.1.0/drep-ai-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "e10ee42af7086c2be05f80517400e1ebad24cf51afbf92db331209c8236ccd32"
     end
   end
   license "MIT"
 
   BINARY_ALIASES = {
-    "aarch64-apple-darwin": {},
+    "aarch64-apple-darwin":      {},
     "aarch64-unknown-linux-gnu": {},
-    "x86_64-apple-darwin": {},
-    "x86_64-unknown-linux-gnu": {}
-  }
+    "x86_64-apple-darwin":       {},
+    "x86_64-unknown-linux-gnu":  {},
+  }.freeze
 
   def target_triple
     cpu = Hardware::CPU.arm? ? "aarch64" : "x86_64"
