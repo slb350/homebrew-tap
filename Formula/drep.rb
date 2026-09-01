@@ -1,7 +1,6 @@
 class Drep < Formula
   desc "Local commit gate for repository linters and LLM code review"
   homepage "https://github.com/slb350/drep"
-  version "2.8.0"
   if OS.mac?
     if Hardware::CPU.arm?
       url "https://github.com/slb350/drep/releases/download/v2.8.0/drep-ai-aarch64-apple-darwin.tar.xz"
@@ -69,5 +68,9 @@ class Drep < Formula
     # Install any leftover files in pkgshare; these are probably config or
     # sample files.
     pkgshare.install(*leftover_contents) unless leftover_contents.empty?
+  end
+
+  test do
+    assert_match version.to_s, shell_output("#{bin}/drep --version")
   end
 end
