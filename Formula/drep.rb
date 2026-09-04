@@ -1,25 +1,25 @@
 class Drep < Formula
   desc "A local commit gate: runs the linters your repo configures, and sends changed code to an LLM for review"
   homepage "https://github.com/slb350/drep"
-  version "2.9.0"
+  version "3.0.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/slb350/drep/releases/download/v2.9.0/drep-ai-aarch64-apple-darwin.tar.xz"
-      sha256 "77fdcadb0fffd5f58500922588e4cfe4acea00830b452f5f57075b8c93e28b75"
+      url "https://github.com/slb350/drep/releases/download/v3.0.0/drep-ai-aarch64-apple-darwin.tar.xz"
+      sha256 "3d2b659f1c1bd957597b108eabba6e86e6cec3ae3b7fcdba30bbe8c1d2688e1b"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/slb350/drep/releases/download/v2.9.0/drep-ai-x86_64-apple-darwin.tar.xz"
-      sha256 "47142d542e61012e7f60bface1d8c1bab701279424ab1c744d146f9738e2a1ff"
+      url "https://github.com/slb350/drep/releases/download/v3.0.0/drep-ai-x86_64-apple-darwin.tar.xz"
+      sha256 "e037c9a892428b510e19f42abd728f8ca1eddb2f8d5321eca71ff58761042226"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/slb350/drep/releases/download/v2.9.0/drep-ai-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "dd7f70ca38841eecf02db79127c610b240d36050e7d3d4a3017c44294cfe8fb1"
+      url "https://github.com/slb350/drep/releases/download/v3.0.0/drep-ai-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "345b6bad5d5474794f82107efdd4fcb3ab26b58349d7cd219b30d5d1f2625e6b"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/slb350/drep/releases/download/v2.9.0/drep-ai-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "f783a3c64aaf14fb0a42ce0d92e7b4e0f0814b2710208edd03c81f73c63e9b0a"
+      url "https://github.com/slb350/drep/releases/download/v3.0.0/drep-ai-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "112ec2409a6e4fd76f69edd2e4365ea4282052ac704198e83c2522ddfc3af4ab"
     end
   end
   license "MIT"
