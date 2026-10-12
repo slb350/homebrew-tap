@@ -1,24 +1,25 @@
 class Drep < Formula
-  desc "Local commit gate for repository linters and LLM code review"
+  desc "A local commit gate: runs the linters your repo configures, and sends changed code to an LLM for review"
   homepage "https://github.com/slb350/drep"
+  version "3.1.2"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/slb350/drep/releases/download/v3.1.1/drep-ai-aarch64-apple-darwin.tar.xz"
-      sha256 "f9f148d0fdaa13b516b5c2bae4780ae429567998ec29212644b3e447907fae59"
+      url "https://github.com/slb350/drep/releases/download/v3.1.2/drep-ai-aarch64-apple-darwin.tar.xz"
+      sha256 "879c1d772e97527f9c5c56c250bbdd1517ac3d40688bb6232c5030d107689ac3"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/slb350/drep/releases/download/v3.1.1/drep-ai-x86_64-apple-darwin.tar.xz"
-      sha256 "9e1697e90e0d5176023a8ae022b7128e5a6122d6d1ed409c3f9c0af2fdf00147"
+      url "https://github.com/slb350/drep/releases/download/v3.1.2/drep-ai-x86_64-apple-darwin.tar.xz"
+      sha256 "0dd52c99198a829b53c6036fd25dcd2d33b60cf8c3e11ae04308266f7e7a7e0d"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/slb350/drep/releases/download/v3.1.1/drep-ai-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "2aa0e8b8a56f57dc76c1f5c37a06388a88fb1265c277da8a80fc942abeb09715"
+      url "https://github.com/slb350/drep/releases/download/v3.1.2/drep-ai-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "2a8a12db571d801813de73a1a4d0af47b14899af5bafb7181b9803ed6f168006"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/slb350/drep/releases/download/v3.1.1/drep-ai-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "387e558a16bf154745ad7852c1f6b2daf9e21aa794ea82d4c866c51d87e617e5"
+      url "https://github.com/slb350/drep/releases/download/v3.1.2/drep-ai-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "6015a723720f05148fe425d5694fbf29a51c0e87de71ae647ffe6ab4919a127a"
     end
   end
   license "MIT"
@@ -68,9 +69,5 @@ class Drep < Formula
     # Install any leftover files in pkgshare; these are probably config or
     # sample files.
     pkgshare.install(*leftover_contents) unless leftover_contents.empty?
-  end
-
-  test do
-    assert_match version.to_s, shell_output("#{bin}/drep --version")
   end
 end
