@@ -1,7 +1,6 @@
 class Drep < Formula
-  desc "A local commit gate: runs the linters your repo configures, and sends changed code to an LLM for review"
+  desc "Local commit gate with configured linters and LLM code review"
   homepage "https://github.com/slb350/drep"
-  version "3.1.9"
   if OS.mac?
     if Hardware::CPU.arm?
       url "https://github.com/slb350/drep/releases/download/v3.1.9/drep-ai-aarch64-apple-darwin.tar.xz"
@@ -24,43 +23,8 @@ class Drep < Formula
   end
   license "MIT"
 
-  BINARY_ALIASES = {
-    "aarch64-apple-darwin":      {},
-    "aarch64-unknown-linux-gnu": {},
-    "x86_64-apple-darwin":       {},
-    "x86_64-unknown-linux-gnu":  {},
-  }.freeze
-
-  def target_triple
-    cpu = Hardware::CPU.arm? ? "aarch64" : "x86_64"
-    os = OS.mac? ? "apple-darwin" : "unknown-linux-gnu"
-
-    "#{cpu}-#{os}"
-  end
-
-  def install_binary_aliases!
-    BINARY_ALIASES[target_triple.to_sym].each do |source, dests|
-      dests.each do |dest|
-        bin.install_symlink bin/source.to_s => dest
-      end
-    end
-  end
-
   def install
-    if OS.mac? && Hardware::CPU.arm?
-      bin.install "drep"
-    end
-    if OS.mac? && Hardware::CPU.intel?
-      bin.install "drep"
-    end
-    if OS.linux? && Hardware::CPU.arm?
-      bin.install "drep"
-    end
-    if OS.linux? && Hardware::CPU.intel?
-      bin.install "drep"
-    end
-
-    install_binary_aliases!
+    bin.install "drep"
 
     # Homebrew will automatically install these, so we don't need to do that
     doc_files = Dir["README.*", "readme.*", "LICENSE", "LICENSE.*", "CHANGELOG.*"]
@@ -69,5 +33,9 @@ class Drep < Formula
     # Install any leftover files in pkgshare; these are probably config or
     # sample files.
     pkgshare.install(*leftover_contents) unless leftover_contents.empty?
+  end
+
+  test do
+    assert_equal "drep #{version}", shell_output("#{bin}/drep --version").strip
   end
 end
